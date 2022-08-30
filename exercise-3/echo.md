@@ -1,0 +1,1 @@
+The echo command is used to display a text or a string to the standard output or a file.

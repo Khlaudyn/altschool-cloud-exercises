@@ -1,0 +1,1 @@
+The cal command displays a well-presented calendar on the terminal. Just enter the word cal on your terminal prompt.

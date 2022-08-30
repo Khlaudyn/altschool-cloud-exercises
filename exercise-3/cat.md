@@ -1,0 +1,1 @@
+The catcommand (short for “concatenate”) is one of the most frequently used commands in Linux. catcommand allows you to create single or multiple files, view contents of files, concatenate files (combining files), and redirect output in terminal or files.
