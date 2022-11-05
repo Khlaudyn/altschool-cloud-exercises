@@ -1,0 +1,52 @@
+  GNU nano 4.8                                                                               setup.yml
+---
+- name: Setup Networking Tools
+  hosts: all
+  become: true
+  become_user: root
+
+
+  tasks:
+  - name: Update all packages to latest version
+    ansible.builtin.apt:
+       name: "*"
+       state: latest
+       update_cache: yes
+
+
+  - name: Install Apache server/PHP
+    ansible.builtin.apt:
+      name:
+      - apache2
+      - php
+      - libapache2-mod-php
+      state: latest
+
+
+  - name: Remove unnecessary packages from cache & dependencies that not required
+    ansible.builtin.apt:
+      autoclean: yes
+      autoremove: yes
+
+
+
+  - name: Start/restart service apache2
+    ansible.builtin.systemd:
+      name: apache2
+      enabled: yes
+      state: restarted
+
+
+  - name: set timezone to Africa/Lagos
+    timezone:
+      name: Africa/Lagos
+
+
+  - name: Copy my index.php file to host server
+    ansible.builtin.copy:
+      src: /home/vagrant/index.php   
+      dest: /var/www/html/index.php
+      remote_src: no
+
+
+      
